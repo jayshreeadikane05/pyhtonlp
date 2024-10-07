@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel File</title>
+</head>
+<body>
+    <h1>Upload Excel File for Scraping</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
+    <label for="cycle">Add the name of html File:</label> 
+    <input type="number" name="namehtml" id="namehtml">
+        <input type="file" name="file" accept=".xlsx">
+        <button type="submit">Upload and Scrape</button>
+    </form>
+</body>
+</html>
