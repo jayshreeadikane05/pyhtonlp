@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>Web Scraping</h1>
-    <form action="/scrape" method="post">
-        <label for="url">Enter URL:</label>
-        <input type="text" id="url" name="url" required>
-        <button type="submit">Scrape</button>
-    </form>
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
+      
+            <input type="file" name="file" accept=".xlsx">
+            <button type="submit">Upload and Scrape</button>
+        </form>
 </body>
 </html>

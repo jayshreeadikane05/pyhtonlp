@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "flask-app",
+      "script": "downloadwebinarzip.py",
+      "interpreter": "D:\\JayshreeBackup\\webscrpping\\venv\\Scripts\\python.exe",
+      "cwd": "D:\\JayshreeBackup\\webscrpping",
+      "env": {
+        "FLASK_ENV": "development",
+        "PYTHONPATH": "D:\\JayshreeBackup\\webscrpping\\venv\\Lib\\site-packages"
+      }
+    }
+  ]
+}

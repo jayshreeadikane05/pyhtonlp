@@ -24,8 +24,10 @@ app.secret_key = 'supersecretkey'
 logging.basicConfig(filename='app.log', level=logging.ERROR,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 socketio = SocketIO(app)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Allow your client origin
-socketio = SocketIO(app, cors_allowed_origins="http://localhost:3000")  # Allow your client origin
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
+# Create SocketIO instance
+socketio = SocketIO(app, cors_allowed_origins="http://localhost:3000")
 def slugify(value):
     if not isinstance(value, str):
         value = str(value) 
