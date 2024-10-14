@@ -24,10 +24,10 @@ app.secret_key = 'supersecretkey'
 logging.basicConfig(filename='app.log', level=logging.ERROR,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 socketio = SocketIO(app)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "http://192.168.1.236:3000"}})
 
 # Create SocketIO instance
-socketio = SocketIO(app, cors_allowed_origins="http://localhost:3000")
+socketio = SocketIO(app, cors_allowed_origins="http://192.168.1.236:3000")
 def slugify(value):
     if not isinstance(value, str):
         value = str(value) 
@@ -487,5 +487,6 @@ def get_image_extension(url):
         return None
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    socketio.run(app, debug=True)
+    port = int(os.environ.get("FLASK_RUN_PORT", 5000))  
+    app.run(host="0.0.0.0", port=port) 
+    socketio.run(app, host="0.0.0.0", port=port, debug=True)

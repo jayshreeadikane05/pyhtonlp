@@ -12,8 +12,8 @@ from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 app = Flask(__name__)
 socketio = SocketIO(app)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-socketio = SocketIO(app, cors_allowed_origins="http://localhost:3000")
+CORS(app, resources={r"/*": {"origins": "http://192.168.1.236:3000"}})
+socketio = SocketIO(app, cors_allowed_origins="http://192.168.1.236:3000")
 def read_excel(file_path):
     df = pd.read_excel(file_path)
     df.columns = df.columns.str.strip()  
@@ -129,4 +129,6 @@ def download_file(filename):
         return jsonify({"error": "File not found"}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("FLASK_RUN_PORT", 5001))  # Get the port from environment variable
+    app.run(host="0.0.0.0", port=port)  # Run the app on the specified port
+    socketio.run(app, host="0.0.0.0", port=port, debug=True)
