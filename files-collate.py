@@ -81,4 +81,5 @@ def download_file(filename):
         return jsonify({'message': 'File not found'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("FLASK_RUN_PORT", 5002))  # Get the port from environment variable
+    app.run(host="0.0.0.0", port=port)
